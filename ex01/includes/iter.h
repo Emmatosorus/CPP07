@@ -4,13 +4,14 @@
 #include <iostream>
 
 template <typename T>
-void	print(T &t)
+void iter(T *t1, size_t t2, void func(T&))
 {
-	std::cout << t << std::endl;
+	for (size_t i = 0; i < t2; i++)
+		func(t1[i]);
 }
 
 template <typename T>
-void iter(T *t1, size_t t2, void func(T&))
+void iter(T *t1, size_t t2, void func(const T&))
 {
 	for (size_t i = 0; i < t2; i++)
 		func(t1[i]);
