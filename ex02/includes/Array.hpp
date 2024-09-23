@@ -2,6 +2,7 @@
 #define WHATEVER_H
 
 #include <iostream>
+#include <cstdlib>
 
 template <class T>
 class Array
@@ -25,12 +26,13 @@ class Array
 
 		~Array()
 		{
-			delete this->array;
+			if (this->array)
+				delete [] this->array;
 		}
 
 		T & operator[](size_t index)
 		{
-			if (index > this->nb_elements)
+			if (index > this->nb_elements - 1)
 				throw std::invalid_argument("Index is out of bounds");
 			return this->array[index];
 		}
